@@ -18,8 +18,8 @@ public class Nightshade : Ennemie
 
     }
 
-    public override void Touché()
+    public override void Touché(Ennemie ennemie)
     {
-        base.Touché();
+        base.Touché(ennemie);
     }
 }

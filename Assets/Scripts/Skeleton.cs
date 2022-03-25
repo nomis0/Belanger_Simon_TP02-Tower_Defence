@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class Skeleton : Ennemie
 {
+    public AudioSource sourceSkeleton;
+    public AudioClip clipMortSkeleton;
+
     //Constructeur
     public Skeleton(int nbVague)
     {
@@ -17,8 +22,20 @@ public class Skeleton : Ennemie
         base.Deplacer();
     }
 
-    public override void Touché()
+    public override void Touché(Ennemie ennemie)
     {
-        base.Touché();
+        base.Touché(ennemie);
+
+        if (pv <= 0)
+        {
+            Meurs(ennemie);
+        }
+    }
+
+    void Meurs(Ennemie ennemie)
+    {
+        ennemie.enabled = false;
+        sourceSkeleton.PlayOneShot(clipMortSkeleton);
+        // le dire à main
     }
 }

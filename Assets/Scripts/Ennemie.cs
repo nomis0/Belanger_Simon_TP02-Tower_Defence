@@ -14,8 +14,8 @@ public class Ennemie : MonoBehaviour
 
     }
 
-    public virtual void Touché()
+    public virtual void Touché(Ennemie ennemie)
     {
-        
+        pv -= 1; 
     }
 }

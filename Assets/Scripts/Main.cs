@@ -16,6 +16,7 @@ public class Main : MonoBehaviour
     private int vie = 100;
     private int nbVague = 0;
     private List<Ennemie> listeEnnemies;
+    private bool vagueEnCours;
 
     // Start is called before the first frame update
     void Start()
@@ -98,4 +99,19 @@ public class Main : MonoBehaviour
             }
         }
     }
+
+    public void EnnemieTue()
+    {
+        gold += 1;
+        morts += 1;
+
+        if (listeEnnemies.Count <= 0)
+        {
+            nbVague += 1;
+            vagueEnCours = false;
+        }
+    }
+
+    // IEnumerable ??
+
 }

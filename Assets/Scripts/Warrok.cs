@@ -17,9 +17,9 @@ public class Warrok : Ennemie
         base.Deplacer();
     }
 
-    public override void Touché()
+    public override void Touché(Ennemie ennemie)
     {
-        base.Touché();
+        base.Touché(ennemie);
 
         //Se divise quand il meurt
         
