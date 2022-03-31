@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Audio;
 
-public class Skeleton : Ennemie
+public class Skeleton : Ennemie, IEnnemies
 {
     public AudioSource sourceSkeleton;
     public AudioClip clipMortSkeleton;
+
+    Rigidbody[] rbs;
+    Animator animator;
 
     //Constructeur
     public Skeleton(int nbVague)
@@ -17,25 +20,48 @@ public class Skeleton : Ennemie
         pv = 1 + nbVague / 2;
     }
 
-    public override void Deplacer()
+
+    // Start is called before the first frame update
+    void Start()
     {
-        base.Deplacer();
+        rbs = GetComponentsInChildren<Rigidbody>();
+        animator = GetComponent<Animator>();
+
+        // Désactiver le ragdoll
+        ActiverRagdoll(false);
     }
 
-    public override void Touché(Ennemie ennemie)
+    public void Deplacer()
     {
-        base.Touché(ennemie);
+        // NavMeshAgent
+        // SetDestination()
+    }
+
+    public void Touché()
+    {
+        pv -= 1;
 
         if (pv <= 0)
         {
-            Meurs(ennemie);
+            Meurs();
         }
     }
 
-    void Meurs(Ennemie ennemie)
+    void Meurs()
     {
-        ennemie.enabled = false;
-        sourceSkeleton.PlayOneShot(clipMortSkeleton);
-        // le dire à main
+        // Activer le ragdoll
+        ActiverRagdoll(true);
+    }
+
+    void ActiverRagdoll(bool value)
+    {
+        // Activer/Désactiver les rigidbodies
+        foreach (var r in rbs)
+        {
+            r.isKinematic = !value;
+        }
+
+        // Activer/Désactiver l'Animator
+        animator.enabled = !value;
     }
 }

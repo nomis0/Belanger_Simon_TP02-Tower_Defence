@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Nightshade : Ennemie
+public class Nightshade : Ennemie, IEnnemies
 {
     //Constructeur
     public Nightshade(int nbVague)
@@ -12,14 +12,14 @@ public class Nightshade : Ennemie
         pv = 2 + nbVague / 2;
     }
 
-    public override void Deplacer()
+    public void Deplacer()
     {
         // Passe autravers des obstacles
 
     }
 
-    public override void Touché(Ennemie ennemie)
+    public void Touché()
     {
-        base.Touché(ennemie);
+        
     }
 }

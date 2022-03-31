@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Glace : MonoBehaviour
+public class Glace : Tours, ITours
 {
-    // Start is called before the first frame update
-    void Start()
+    
+
+    // Constructeur
+    public Glace(GameObject platteforme)
     {
-        
+        degats = 1;
+        cout = 4;
+        atkSpd = 2.5f;
+        enRecharge = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void Tirer()
+    {
+
     }
 }

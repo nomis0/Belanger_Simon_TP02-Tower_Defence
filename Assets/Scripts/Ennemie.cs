@@ -9,13 +9,4 @@ public class Ennemie : MonoBehaviour
     protected int vitesse { get { return vitesse; } set { value = vitesse; } }
     protected int pv { get { return pv; } set { value = pv; } }
 
-    public virtual void Deplacer()
-    {
-
-    }
-
-    public virtual void Touché(Ennemie ennemie)
-    {
-        pv -= 1; 
-    }
 }

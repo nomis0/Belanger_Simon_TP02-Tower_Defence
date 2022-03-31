@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Warrok : Ennemie
+public class Warrok : Ennemie, IEnnemies
 {
     //Constructeur
     public Warrok(int nbVague)
@@ -12,14 +12,14 @@ public class Warrok : Ennemie
         pv = 3 + nbVague/2;
     }
 
-    public override void Deplacer()
+    public void Deplacer()
     {
-        base.Deplacer();
+        
     }
 
-    public override void Touché(Ennemie ennemie)
+    public void Touché()
     {
-        base.Touché(ennemie);
+        
 
         //Se divise quand il meurt
         
