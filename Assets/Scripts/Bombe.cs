@@ -21,8 +21,20 @@ public class Bombe : Tours, ITours
         
     }
 
-    public void Tirer()
+    void OnTriggerEnter()
     {
 
+    }
+
+    public void Tirer(IEnnemies ennemie, Transform transf_ennemie)
+    {
+        // tire la bombe sur l'ennemie avec balistique
+
+        Exploser();
+    }
+
+    void Exploser()
+    {
+        // Attenque secondes et explose
     }
 }

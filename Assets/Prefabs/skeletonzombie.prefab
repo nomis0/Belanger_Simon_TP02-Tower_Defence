@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 1964279049022271785}
   - component: {fileID: 2073973728790419136}
   - component: {fileID: 7047234275014063907}
+  - component: {fileID: 966767131693747124}
   m_Layer: 0
   m_Name: skeletonzombie
   m_TagString: Untagged
@@ -418,6 +419,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &966767131693747124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155549130534595475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1aec9a4a74d4564a896fc089c0a102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceSkeleton: {fileID: 0}
+  clipMortSkeleton: {fileID: 0}
+  transf_ennemie: {fileID: 1964279049022271785}
 --- !u!1 &1184946135600552349
 GameObject:
   m_ObjectHideFlags: 0

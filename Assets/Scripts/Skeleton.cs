@@ -8,6 +8,10 @@ public class Skeleton : Ennemie, IEnnemies
 {
     public AudioSource sourceSkeleton;
     public AudioClip clipMortSkeleton;
+    public Transform transf_ennemie;
+
+    NavMeshAgent agent;
+    Vector3 destination = new Vector3(10f, 1.99f, -57.25f);
 
     Rigidbody[] rbs;
     Animator animator;
@@ -24,17 +28,21 @@ public class Skeleton : Ennemie, IEnnemies
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+
         rbs = GetComponentsInChildren<Rigidbody>();
         animator = GetComponent<Animator>();
 
         // Désactiver le ragdoll
         ActiverRagdoll(false);
+
+        Deplacer();
     }
 
     public void Deplacer()
     {
-        // NavMeshAgent
-        // SetDestination()
+        agent.SetDestination(destination);
+        Debug.Log("Destination donné");
     }
 
     public void Touché()
