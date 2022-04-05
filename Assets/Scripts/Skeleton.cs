@@ -42,7 +42,6 @@ public class Skeleton : Ennemie, IEnnemies
     public void Deplacer()
     {
         agent.SetDestination(destination);
-        Debug.Log("Destination donné");
     }
 
     public void Touché()
