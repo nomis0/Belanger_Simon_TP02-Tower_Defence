@@ -21,7 +21,7 @@ public class Glace : Tours, ITours
         
     }
 
-    public void Tirer(IEnnemies ennemie, Transform transf_ennemie)
+    public void Tirer(Ennemie ennemie)
     {
         // Tire avec balistique
     }

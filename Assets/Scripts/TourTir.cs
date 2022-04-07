@@ -6,6 +6,7 @@ public class TourTir : Tours, ITours
 {
     public Transform tour;
     public LineRenderer tir_trail;
+    private RaycastHit hit;
 
     // Constructeur
     public TourTir(GameObject platteforme)
@@ -25,30 +26,21 @@ public class TourTir : Tours, ITours
     void OnTriggerEnter(Collider other)
     {
         // S'il s'agit d'un IEnnemies
-        IEnnemies ennemie = other.GetComponentInParent<IEnnemies>();
+        Ennemie ennemie = other.GetComponentInParent<Ennemie>();
         Transform transf_ennemie = other.GetComponentInParent<Transform>();
 
         if (ennemie != null)
         {
-            Tirer(ennemie, transf_ennemie);
+            if (!enRecharge)
+            { 
+                Tirer(ennemie);
+            }
         }
     }
 
-    public void Tirer(IEnnemies ennemie, Transform transf_ennemie)
+    public void Tirer(Ennemie ennemie)
     {
-        // bullet trail A
-        tir_trail.SetPosition(0, tour.position);
-
-        // Je crée un rayon
-        Ray fireRay = new Ray(tour.position, transf_ennemie.position);
-
-        // Cast le rayon
-        Physics.Raycast(fireRay);
-
-        if (ennemie != null)
-        {
-            ennemie.Touché();
-        }
-        
+        IEnnemies mechant = ennemie.GetComponentInParent<IEnnemies>();
+        mechant.Touché(ennemie);
     }
 }

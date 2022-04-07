@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ITours
 {
-    void Tirer(IEnnemies ennemie, Transform transf_ennemie);
+    void Tirer(Ennemie ennemie);
 }

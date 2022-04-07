@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IEnnemies
 {
-    void Touché();
+    void Touché(Ennemie ennemie);
 
     void Deplacer();
 }

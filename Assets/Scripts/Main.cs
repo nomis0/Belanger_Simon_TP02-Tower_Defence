@@ -11,23 +11,29 @@ public class Main : MonoBehaviour
 
     public Button btnPause;
     public Button btnReprendre;
+    public Text timer;
+
     private int gold = 0;
     private int morts = 0;
     private int vie = 100;
     private int nbVague = 0;
     private List<Ennemie> listeEnnemies;
     private bool vagueEnCours;
+    private bool enPause = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Data.Gold = 100;
+        gold = Data.Gold;
+        NouvVague(nbVague);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // timer
+
     }
 
     private void NouvVague(int nbVague)
@@ -100,10 +106,13 @@ public class Main : MonoBehaviour
         }
     }
 
-    public void EnnemieTue()
+    public void EnnemieMort(Ennemie ennemie)
     {
-        gold += 1;
-        morts += 1;
+        listeEnnemies.Remove(ennemie);
+        ennemie.enabled = false;
+
+        gold = Data.Gold;
+        morts = Data.ennemieMort;
 
         if (listeEnnemies.Count <= 0)
         {

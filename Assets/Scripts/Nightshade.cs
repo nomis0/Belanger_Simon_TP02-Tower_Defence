@@ -10,7 +10,6 @@ public class Nightshade : Ennemie, IEnnemies
     public Transform transf_ennemie;
 
     NavMeshAgent agent;
-    Vector3 destination = new Vector3(10f, 1.99f, -57.25f);
 
     Rigidbody[] rbs;
     Animator animator;
@@ -39,20 +38,20 @@ public class Nightshade : Ennemie, IEnnemies
 
     public void Deplacer()
     {
-        agent.SetDestination(destination);
+        agent.SetDestination(new Vector3(10f, 1.99f, -57.25f));
     }
 
-    public void Touché()
+    public void Touché(Ennemie night)
     {
         pv -= 1;
 
         if (pv <= 0)
         {
-            Meurs();
+            Meurs(night);
         }
     }
 
-    void Meurs()
+    void Meurs(Ennemie ennemie)
     {
         // Activer le ragdoll
         ActiverRagdoll(true);

@@ -26,7 +26,7 @@ public class Bombe : Tours, ITours
 
     }
 
-    public void Tirer(IEnnemies ennemie, Transform transf_ennemie)
+    public void Tirer(Ennemie ennemie)
     {
         // tire la bombe sur l'ennemie avec balistique
 

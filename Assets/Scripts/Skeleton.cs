@@ -11,7 +11,6 @@ public class Skeleton : Ennemie, IEnnemies
     public Transform transf_ennemie;
 
     NavMeshAgent agent;
-    Vector3 destination = new Vector3(10f, 1.99f, -57.25f);
 
     Rigidbody[] rbs;
     Animator animator;
@@ -41,23 +40,26 @@ public class Skeleton : Ennemie, IEnnemies
 
     public void Deplacer()
     {
-        agent.SetDestination(destination);
+        agent.SetDestination(new Vector3(10f, 1.99f, -57.25f));
     }
 
-    public void Touché()
+    public void Touché(Ennemie ske)
     {
         pv -= 1;
 
         if (pv <= 0)
         {
-            Meurs();
+            Meurs(ske);
         }
     }
 
-    void Meurs()
+    void Meurs(Ennemie ske)
     {
         // Activer le ragdoll
         ActiverRagdoll(true);
+        Data.ennemieMort += 1;
+        Data.Gold += 1;
+        Data.EnnemieTue(ske);
     }
 
     void ActiverRagdoll(bool value)
