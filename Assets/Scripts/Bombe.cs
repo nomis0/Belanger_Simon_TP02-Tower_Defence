@@ -5,9 +5,8 @@ using UnityEngine;
 public class Bombe : Tours, ITours
 {
 
-
     // Constructeur
-    public Bombe(GameObject platteforme)
+    public Bombe()
     {
         degats = 5;
         cout = 10;
@@ -29,12 +28,25 @@ public class Bombe : Tours, ITours
     public void Tirer(Ennemie ennemie)
     {
         // tire la bombe sur l'ennemie avec balistique
-
         Exploser();
+
+        enRecharge = true;
+        StartCoroutine(Recharge());
     }
 
-    void Exploser()
+    IEnumerator Recharge()
     {
-        // Attenque secondes et explose
+        yield return new WaitForSeconds(atkSpd);
+        enRecharge = false;
+        yield break;
+    }
+
+    IEnumerator Exploser()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        //Explose
+
+        yield break;
     }
 }

@@ -93,6 +93,8 @@ GameObject:
   - component: {fileID: 8795264265669027785}
   - component: {fileID: 1024824682590456402}
   - component: {fileID: 5382360325288081704}
+  - component: {fileID: 2078135725712785098}
+  - component: {fileID: 2093621931820789627}
   m_Layer: 0
   m_Name: Tower Slower
   m_TagString: Untagged
@@ -166,3 +168,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &2078135725712785098
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638392526859878731}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 12.5
+  m_Center: {x: 0.000004887581, y: 0.0000001788139, z: 0.6019672}
+--- !u!114 &2093621931820789627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638392526859878731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385afc5181d964b9dbfc1c5b6b29d69a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

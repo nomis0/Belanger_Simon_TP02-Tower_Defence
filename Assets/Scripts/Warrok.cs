@@ -8,6 +8,7 @@ public class Warrok : Ennemie, IEnnemies
     public AudioSource sourceSkeleton;
     public AudioClip clipMortSkeleton;
     public Transform transf_ennemie;
+    public Main main;
 
     NavMeshAgent agent;
 
@@ -51,10 +52,14 @@ public class Warrok : Ennemie, IEnnemies
         }
     }
 
-    void Meurs(Ennemie ennemie)
+    void Meurs(Ennemie war)
     {
         // Activer le ragdoll
         ActiverRagdoll(true);
+
+        Data.ennemieMort += 1;
+        Data.Gold += 1;
+        main.EnnemieMort(war);
     }
 
     void ActiverRagdoll(bool value)

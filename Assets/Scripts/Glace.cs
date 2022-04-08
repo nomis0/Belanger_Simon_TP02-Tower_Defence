@@ -7,7 +7,7 @@ public class Glace : Tours, ITours
     
 
     // Constructeur
-    public Glace(GameObject platteforme)
+    public Glace()
     {
         degats = 1;
         cout = 4;
@@ -15,14 +15,24 @@ public class Glace : Tours, ITours
         enRecharge = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter()
     {
-        
+
     }
 
     public void Tirer(Ennemie ennemie)
     {
         // Tire avec balistique
+
+
+        enRecharge = true;
+        StartCoroutine(Recharge());
+    }
+
+    IEnumerator Recharge()
+    {
+        yield return new WaitForSeconds(atkSpd);
+        enRecharge = false;
+        yield break;
     }
 }

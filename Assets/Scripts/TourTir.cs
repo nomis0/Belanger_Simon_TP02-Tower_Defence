@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class TourTir : Tours, ITours
 {
-    public Transform tour;
-    public LineRenderer tir_trail;
-    private RaycastHit hit;
-
+    
     // Constructeur
-    public TourTir(GameObject platteforme)
+    public TourTir()
     {
         degats = 2;
         cout = 1;
@@ -27,12 +24,13 @@ public class TourTir : Tours, ITours
     {
         // S'il s'agit d'un IEnnemies
         Ennemie ennemie = other.GetComponentInParent<Ennemie>();
-        Transform transf_ennemie = other.GetComponentInParent<Transform>();
 
         if (ennemie != null)
         {
+            //Si on peut tirer...
             if (!enRecharge)
-            { 
+            {
+                // On tire
                 Tirer(ennemie);
             }
         }
@@ -42,5 +40,14 @@ public class TourTir : Tours, ITours
     {
         IEnnemies mechant = ennemie.GetComponentInParent<IEnnemies>();
         mechant.Touché(ennemie);
+        enRecharge = true;
+        StartCoroutine(Recharge());
+    }
+
+    IEnumerator Recharge()
+    {
+        yield return new WaitForSeconds(atkSpd);
+        enRecharge = false;
+        yield break;
     }
 }

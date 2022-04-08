@@ -9,6 +9,7 @@ public class Skeleton : Ennemie, IEnnemies
     public AudioSource sourceSkeleton;
     public AudioClip clipMortSkeleton;
     public Transform transf_ennemie;
+    public Main main; 
 
     NavMeshAgent agent;
 
@@ -59,7 +60,7 @@ public class Skeleton : Ennemie, IEnnemies
         ActiverRagdoll(true);
         Data.ennemieMort += 1;
         Data.Gold += 1;
-        Data.EnnemieTue(ske);
+        main.EnnemieMort(ske);
     }
 
     void ActiverRagdoll(bool value)

@@ -178,6 +178,8 @@ GameObject:
   - component: {fileID: 4048980105017930841}
   - component: {fileID: 848385991872944234}
   - component: {fileID: 5765047597208027449}
+  - component: {fileID: 7172342375714394131}
+  - component: {fileID: 1056372139338201603}
   m_Layer: 0
   m_Name: Tower Gun
   m_TagString: Untagged
@@ -250,3 +252,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &7172342375714394131
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756670927614896450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 11
+  m_Center: {x: -0.0000047385693, y: 0.000000119209275, z: 0}
+--- !u!114 &1056372139338201603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756670927614896450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24734d475ca6e4e54b3868350e3167ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tour: {fileID: 4048980105017930841}
+  tir_trail: {fileID: 0}

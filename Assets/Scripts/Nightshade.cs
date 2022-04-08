@@ -8,6 +8,7 @@ public class Nightshade : Ennemie, IEnnemies
     public AudioSource sourceNight;
     public AudioClip clipMortNight;
     public Transform transf_ennemie;
+    public Main main;
 
     NavMeshAgent agent;
 
@@ -51,10 +52,14 @@ public class Nightshade : Ennemie, IEnnemies
         }
     }
 
-    void Meurs(Ennemie ennemie)
+    void Meurs(Ennemie night)
     {
         // Activer le ragdoll
         ActiverRagdoll(true);
+
+        Data.ennemieMort += 1;
+        Data.Gold += 1;
+        main.EnnemieMort(night);
     }
 
     void ActiverRagdoll(bool value)

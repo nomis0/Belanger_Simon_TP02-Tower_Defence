@@ -10,15 +10,13 @@ public class Base : MonoBehaviour
     public GameObject tourTir;
     public GameObject glace;
     public GameObject bombe;
-    public Main main;
-    
-
 
     private void OnMouseDown()
     {
         selectionner = true;
+        Data.selectionner = true;
         Debug.Log("Select");
-
-        main.BaseSelectionner(selectionner);
+        Data.BaseSelect = name;
+        Debug.Log($"{name}");
     }    
 }

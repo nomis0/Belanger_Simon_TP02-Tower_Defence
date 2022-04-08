@@ -15,6 +15,13 @@ public class Main : MonoBehaviour
     public Button btnTourTir;
     public Button btnGlace;
     public Button btnBombe;
+    public Button btnEffacer;
+    public Text pv;
+
+    public GameObject tourTirPrefab;
+    public GameObject glacePrefab;
+    public GameObject bombePrefab;
+    public Collider fin;
 
     private int gold = 0;
     private int morts = 0;
@@ -27,9 +34,21 @@ public class Main : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Data.Gold = 100;
+        //Ajoute le listener pour les boutons
+        btnTourTir.onClick.AddListener(PlacerTourTir);
+        btnGlace.onClick.AddListener(PlacerGlace);
+        btnBombe.onClick.AddListener(PlacerBombe);
+        btnEffacer.onClick.AddListener(EffacerTour);
+        btnPause.onClick.AddListener(Pause);
+        btnReprendre.onClick.AddListener(Reprendre);
+
+        //Or au début du jeux
+        Data.Gold = 10;
         gold = Data.Gold;
+
         NouvVague(nbVague);
+        //start le timer
+        StartCoroutine(Timer());
     }
 
     // Update is called once per frame
@@ -124,15 +143,104 @@ public class Main : MonoBehaviour
         }
     }
 
-    public void BaseSelectionner(bool select)
+    // place tour normal sur la base selectionner
+    void PlacerTourTir()
     {
-        if (select == true)
+        if (Data.BaseSelect == "Tower Base")
+            Instantiate(tourTirPrefab, new Vector3(-17.59f, 0f, -2.31f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (1)")
+            Instantiate(tourTirPrefab, new Vector3(-16.69f, 0f, -17.8f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (2)")
+            Instantiate(tourTirPrefab, new Vector3(-11.12f, 0f, 42.76f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (3)")
+            Instantiate(tourTirPrefab, new Vector3(-0.74f, 0f, -3.93f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (4)")
+            Instantiate(tourTirPrefab, new Vector3(-0.81f, 0f, -16.42f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (5)")
+            Instantiate(tourTirPrefab, new Vector3(8.29f, 0f, -34.34f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (6)")
+            Instantiate(tourTirPrefab, new Vector3(6.29f, 0f, -26.14f), new Quaternion(-90f, 90f, 90f, 90f));
+    }
+
+    // place tour de glace sur la base selectionner
+    void PlacerGlace()
+    {
+        if (Data.BaseSelect == "Tower Base")
+            Instantiate(glacePrefab, new Vector3(-17.59f, 0f, -2.31f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (1)")
+            Instantiate(glacePrefab, new Vector3(-16.69f, 0f, -17.8f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (2)")
+            Instantiate(glacePrefab, new Vector3(-11.12f, 0f, 42.76f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (3)")
+            Instantiate(glacePrefab, new Vector3(-0.74f, 0f, -3.93f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (4)")
+            Instantiate(glacePrefab, new Vector3(-0.81f, 0f, -16.42f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (5)")
+            Instantiate(glacePrefab, new Vector3(8.29f, 0f, -34.34f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (6)")
+            Instantiate(glacePrefab, new Vector3(6.29f, 0f, -26.14f), new Quaternion(-90f, 90f, 90f, 90f));
+    }
+
+    // place tour à bombe sur la base selectionner
+    void PlacerBombe()
+    {
+        if (Data.BaseSelect == "Tower Base")
+            Instantiate(bombePrefab, new Vector3(-17.59f, 0f, -2.31f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (1)")
+            Instantiate(bombePrefab, new Vector3(-16.69f, 0f, -17.8f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (2)")
+            Instantiate(bombePrefab, new Vector3(-11.12f, 0f, 42.76f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (3)")
+            Instantiate(bombePrefab, new Vector3(-0.74f, 0f, -3.93f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (4)")
+            Instantiate(bombePrefab, new Vector3(-0.81f, 0f, -16.42f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (5)")
+            Instantiate(bombePrefab, new Vector3(8.29f, 0f, -34.34f), new Quaternion(-90f, 90f, 90f, 90f));
+        else if (Data.BaseSelect == "Tower Base (6)")
+            Instantiate(bombePrefab, new Vector3(6.29f, 0f, -26.14f), new Quaternion(-90f, 90f, 90f, 90f));
+    }
+
+    void EffacerTour()
+    {
+        // effacer les tours
+    }
+
+    public void EnnemieArriver(Ennemie ennemie)
+    {
+        // reduit les pvs
+        Data.Pv -= 1;
+        pv.text = Data.Pv.ToString();
+        // Détruit l'ennemie
+        Destroy(ennemie);
+    }
+
+    IEnumerator Timer()
+    {
+        while (true)
         {
-            btnTourTir.enabled = true;
-            Debug.Log("BtnTour");
-            btnGlace.enabled = true;
-            btnBombe.enabled = true;
+            //Ajoute des secondes
+            timer.text = Time.deltaTime.ToString();
         }
     }
 
+    void Pause()
+    {
+        //mettre le jeux en pause
+        Debug.Log("Jeux en pause");
+
+        //masquer le bouton de pause
+        btnPause.enabled = false;
+        //Activer le bouton reprendre
+        btnReprendre.enabled = true;
+    }
+
+    void Reprendre()
+    {
+        //reprendre le jeux
+        Debug.Log("Jeux reprit");
+        //masquer le bouton reprendre
+        btnReprendre.enabled = false;
+        //Activer le bouton Pause
+        btnPause.enabled = true;
+    }
 }
