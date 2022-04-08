@@ -12,6 +12,9 @@ public class Main : MonoBehaviour
     public Button btnPause;
     public Button btnReprendre;
     public Text timer;
+    public Button btnTourTir;
+    public Button btnGlace;
+    public Button btnBombe;
 
     private int gold = 0;
     private int morts = 0;
@@ -121,6 +124,15 @@ public class Main : MonoBehaviour
         }
     }
 
-    // IEnumerable ??
+    public void BaseSelectionner(bool select)
+    {
+        if (select == true)
+        {
+            btnTourTir.enabled = true;
+            Debug.Log("BtnTour");
+            btnGlace.enabled = true;
+            btnBombe.enabled = true;
+        }
+    }
 
 }
